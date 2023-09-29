@@ -6,6 +6,12 @@ console.log("Hello World");
 
 app.use("/public", express.static(`${__dirname}/public`));
 
+app.use((req, res) => {
+  const log = `${req.method} /${req.path} - ${req.ip}`;
+  console.log(log);
+  next();
+});
+
 app.get("/json", (req, res) => {
   if (process.env["MESSAGE_STYLE"] === "uppercase") {
     res.json({ message: "HELLO JSON" });
