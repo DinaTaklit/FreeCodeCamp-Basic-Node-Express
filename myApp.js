@@ -25,6 +25,13 @@ app.get(
   }
 );
 
+app.get("/:word/echo", (req, res) => {
+  const word = req.params.word;
+  res.json({
+    echo: word,
+  });
+});
+
 app.get("/json", (req, res) => {
   if (process.env["MESSAGE_STYLE"] === "uppercase") {
     res.json({ message: "HELLO JSON" });
