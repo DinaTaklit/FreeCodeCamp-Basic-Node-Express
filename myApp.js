@@ -29,6 +29,15 @@ app.get(
   }
 );
 
+app.post("/name", (req, res) => {
+  const firstName = req.body.first;
+  const lastName = req.body.last;
+  const name = `${firstName} ${lastName}`;
+  res.json({
+    name,
+  });
+});
+
 app.get("/name", (req, res) => {
   const firstName = req.query.first;
   const lastName = req.query.last;
